@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Countdown } from './components/Countdown'
 import { NewCylcleForm } from './components/NewCycleForm'
 import { useContext } from 'react'
+import { CyclesContext } from '../../contexts/CyclesContext'
 
 // eslint-disable-next-line no-use-before-define
 
@@ -38,12 +39,17 @@ export function Home() {
 
   const { handleSubmit, watch, reset } = newCycleForm
 
+  function handleCreateNewCycle(data: NewCycleFormData) {
+    createNewCycle(data)
+    reset()
+  }
+
   const task = watch('task')
   const isSubmitDisabled = !task
 
   return (
     <HomeContainer>
-      <form action="" onSubmit={handleSubmit(createNewCycle)}>
+      <form action="" onSubmit={handleSubmit(handleCreateNewCycle)}>
         <FormProvider {...newCycleForm}>
           <NewCylcleForm />
         </FormProvider>
