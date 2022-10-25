@@ -13,8 +13,6 @@ import { NewCylcleForm } from './components/NewCycleForm'
 import { useContext } from 'react'
 import { CyclesContext } from '../../contexts/CyclesContext'
 
-// eslint-disable-next-line no-use-before-define
-
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa!'),
   minutesAmount: zod
